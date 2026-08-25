@@ -1,0 +1,81 @@
+#set text(lang: "zh")
+
+#set page(
+  paper: "a4",
+  margin: 72pt,
+)
+#let indent = h(2em)
+#set text(font: "Source Han Sans SC",size:12pt)
+
+#set figure(supplement: "表")
+
+#set heading(numbering: (..nums) => {
+  if nums.len() == 1 {
+    numbering("一、", nums.at(0))
+  } else if nums.len() == 2 {
+    numbering("（一）", nums.at(1))
+  } else {
+    numbering("（1）", nums.at(2))
+  }
+})
+#show heading: it => {
+  if it.level == 1 {
+    
+    align(center, text(size: 22pt, weight: "bold", it))
+  } else {
+    it
+  }
+}
+
+
+
+
+#v(8em)
+#align(center)[
+  #text(size: 26pt, weight:"medium")[机械制造技术基础课程设计]\
+
+  #text(size: 26pt, weight:"medium")[说明书]
+
+  #v(2em)
+  #text(size: 22pt, weight:700, stroke: 0.8pt)[设计题目:]
+  #text(size: 22pt, weight:"medium")[法兰盘的机械加工工艺规程及]\
+
+  #text(size: 22pt, weight:"medium")[夹具设计]
+]
+
+#v(15em)
+#align(center)[
+  #text(size: 22pt)[设 计 者：刘陈阳]\
+  #v(2em)
+  #text(size: 22pt)[指导教师：]\
+  #v(3em)
+  #text(size: 22pt)[2026年8月24日]
+]
+
+#pagebreak()
+
+#set text(font:"SimSun",size:12pt , weight: "medium")
+
+#align(center)[
+  #text(size: 22pt, weight:"bold")[序#h(1em)言]
+  ]
+#indent 机械制造工艺学课程设计是在我们学完大学全部基础课，设计基础课以及大部分专业课之后进行的。这是我们理论联系设计的训练，因此，它在我们四年的大学生活中占有重要的地位。\
+#indent 就我个人而言，我希望通过这次课程设计对自己未来将从事的工作进行一次适应性训练，从中锻炼自己分析问题、解决问题的能力为今后参加祖国的“四化”建设打下一个良好的基础。\
+#indent 由于能力有限，设计尚有许多不足之处，恳请各位老师给予指教。
+
+= 零件的分析
+== 零件的作用
+#indent 题目中所给的零件是CA6140车床的法兰盘，它位于车床手柄处，这个带刻度的法兰盘总成，核心作用是把操作工转动进给手柄的圈数，变成刀具具体的移动距离，并通过刻度清晰地显示出来。\
+#indent 其中法兰盘它主要起一个“连接底座”的作用。通常会被固定在车床的大滑板上，并为内部的传动轴提供精确的安装位置和支撑。可以把法兰盘理解成这个装置的“骨架”。\
+#indent 其上的刻度盘它就固定在法兰盘的外圈或前端。上面有精确的刻度线，用来和固定在床身上的基准线对齐，从而读出数值
+== 零件的工艺分析
+#indent 本零件为 CA6140 车床法兰盘，材料 HT200 灰铸铁。零件以回转结构为主，右端法兰铣出一对平行平面；零件中心为基准 A，即$#sym.phi.alt 20 ^(+0.045)_ 0$通孔；$#sym.phi.alt 100$外圆、B 端面对基准 A 跳动要求0.03mm；法兰根部设置 R5 过渡圆角，设有$3 times 2$退刀槽及多处倒角；分布$4 times #sym.phi.alt 9$通孔与侧面小孔。技术要求：B 面抛光;$#sym.phi.alt 100$ 外圆无光镀铬；外圆柱面刻字刻线。零件精度要求较高，兼顾回转表面、平面、孔系加工,工序多。\
+#indent 依据图纸大致可得到
+#indent #enum(
+  [主体回转表面（各外圆、端面、R5 圆角、退刀槽、中心通孔 $#sym.phi.alt 20$）主要由 CA6140 车床完成；],
+  [φ90 法兰的一对平行平面，属于非回转表面，需要 X63 铣床粗、精铣；],
+  [$4‑#sym.phi.alt 9$通孔、侧面 $#sym.phi.alt 6$ 孔，由 Z525 立式钻床加工；],
+  [关键精度：$#sym.phi.alt 20 $通孔是基准 A，$#sym.phi.alt 100$ 外圆、B 端面相对基准 A 有跳动 0.03mm 要求，因此 $#sym.phi.alt 20$通孔不能钻床铰孔成型；钻床仅钻底孔，车床镗孔保证同轴度与跳动；],
+  [毛坯铸件 HT200，铸造后必须去应力退火，消除铸造应力，防止加工后变形；],
+  [表面处理约束：B 面抛光；$#sym.phi.alt 100$外圆无光镀铬；外圆刻字，刻字需安排在镀铬之前，电镀对刻线位置做保护，避免铬层填平刻字。],
+)
