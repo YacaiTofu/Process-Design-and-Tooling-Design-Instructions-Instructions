@@ -25,6 +25,8 @@
     it
   }
 }
+#show figure.where(kind: table): set figure.caption(position: top)
+#show figure.where(kind: table): set figure(supplement: [表])
 
 #v(8em)
 #align(center)[
