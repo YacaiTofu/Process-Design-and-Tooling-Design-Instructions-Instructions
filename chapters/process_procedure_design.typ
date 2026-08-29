@@ -94,23 +94,32 @@ $ R_min=100+2 times 0.5 + 1.6/2=101.8 $
 $ R_max=91+2 times 1 + 3.2"/"2 =94.6 $
 $ R_min=91+2 times 0.5 + 1.6/2=92.8 $
 
+#let a = 100-0.12
 #figure(
   kind: table,
   caption: [加工余量表],
   table(
-    stroke: 0.5pt,
     align: center,
-    columns: (auto, auto, auto,auto),
-   table.cell(colspan: 2)[加工表面], [径向],[轴向],
-    table.cell(rowspan: 2)[加工前尺寸], [最大], [124.6],[2],
-    [最小], [1], [1],
-    table.cell(rowspan: 2)[加工后尺寸], [最大], [124.6],[1],
-    [最小], [120.6], [2],
-    table.cell(rowspan: 2)[加工余量(单边)], [最大], [3.1],[2], 
-    [最小],  [0.125],[2],
-    // 加工公差（单边）
-    table.cell(colspan: 2)[加工公差(单边)], [+1.3 \ -0.7],[2], 
-    ),
+    stroke: none,
+    columns: (auto, auto, auto, auto),
+    table.hline(stroke: 1.2pt),
+    table.cell(colspan: 2)[加工表面], [径向], [轴向],
+    table.hline(stroke: 0.5pt),
+    table.cell(rowspan: 2)[加工前尺寸], [最大], [103.6], [94.6],
+    [最小], [101.8], [92.8],
+    table.cell(rowspan: 2)[加工后尺寸], [最大], [100.34], [90],
+    [最小], [#a], [90],
+    table.cell(rowspan: 2)[加工余量], [最大], [3.6], [4.6],
+    [最小], [1.8], [22.8],
+    table.cell(colspan: 2)[加工公差], [$frac(0.34, -0.12)$], [0],
+    table.hline(stroke: 1.2pt),
+  ),
 )
+
+#indent 为了保证加工的顺利进行，采购与铸造时的便利，坯料质检的容易，对坯料加工余量在最大值略微向下取整，即坯料尺寸为$ph 103 times 94 "mm"$
+=== 确定切削用量和基本工时
+#indent 工序1：粗车$ph 100$柱体左侧端面，外圆和粗车B面\
+#indent 工序2：粗车$ph 45$右侧端面，外圆，$ph 90$外圆以及右端面
+
 
 
