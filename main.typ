@@ -14,8 +14,10 @@
     numbering("一、", nums.at(0))
   } else if nums.len() == 2 {
     numbering("（一）", nums.at(1))
-  } else {
+  } else if nums.len() == 3 {
     numbering("（1）", nums.at(2))
+  } else {
+    numbering("1）", nums.at(3))
   }
 })
 #show heading: it => {
