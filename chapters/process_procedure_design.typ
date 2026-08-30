@@ -274,7 +274,8 @@ $ T_j = 0.35 + 0.60 + 0.35 + 0.16 = 1.46"min" $
 1.加工材料\
 #indent 工件材料：HT200灰铸铁 180HBS\
 #indent 加工要求：半精车$ph 100$回转面、左端面及 B 面，并在 B 面两侧圆柱靠近 B 面的边线上倒 C1.5 角\
-#indent 半精车采用硬质合金 YG6 车刀，背吃刀量 $alpha_p = 1"mm"$，进给量 $f = 0.4"mm/r"$，加工设备仍选用 CA6140 卧式车床。\
+#indent 半精车采用硬质合金 YG6 车刀，前角 $gamma_0 = 6 degree$，主后角 $alpha_0 = 7 degree$，刃倾角 $lambda_s = +3 degree$，副偏角 $k_r^' = 6 degree$，背吃刀量 $alpha_p = 1"mm"$，进给量 $f = 0.4"mm/r"$，加工设备仍选用 CA6140 卧式车床。\
+#indent 本工序各表面的粗糙度要求为：$ph 100$ 右端面 Ra1.6，$ph 100$ 回转面 Ra0.8，B 面 Ra0.4，$ph 90$ 回转面 Ra6.4。半精车为后续精车与磨削留有加工余量，最终由精加工保证上述粗糙度。\
 #indent 硬质合金车刀车削灰铸铁的切削速度计算公式为\
 $ v = frac(c_v, T^(0.2) a_(p)^(0.15) f^(0.2)) k_v $
 #grid(
@@ -332,10 +333,10 @@ $ T_j = 0.26 + 1.08 + 0.63 + 0.74 + 0.53 + 0.06 = 3.30"min" $
     table.hline(stroke: 0.5pt),
     table.cell(rowspan: 5, align: center + horizon)[刀具],
     [刀具材料], [硬质合金 YG6],
-    [前角 $gamma_0$], [$12 degree$],
-    [后角 $alpha_0$], [$7 degree$],
-    [主偏角 $k_r$], [$75 degree$],
-    [刃倾角 $lambda_s$], [$#sym.minus 5 degree$],
+    [前角 $gamma_0$], [$6 degree$],
+    [主后角 $alpha_0$], [$7 degree$],
+    [刃倾角 $lambda_s$], [$+3 degree$],
+    [副偏角 $k_r^'$], [$6 degree$],
     table.cell(rowspan: 3, align: center + horizon)[切削参数],
     [背吃刀量 $a_p$], [$1"mm"$],
     [进给量 $f$], [$0.4"mm/r"$],
