@@ -22,9 +22,13 @@
 })
 #show heading: it => {
   if it.level == 1 {
-    align(center, text(size: 22pt, weight: "bold", it))
+    align(center, block(spacing: 1.5em, text(size: 22pt, weight: "bold", it)))
+  } else if it.level == 2 {
+    block(above: 1.2em, below: 0.6em, text(size: 16pt, weight: "bold", it))
+  } else if it.level == 3 {
+    block(above: 1em, below: 0.5em, text(size: 14pt, weight: "bold", it))
   } else {
-    it
+    block(above: 0.9em, below: 0.4em, text(size: 13pt, weight: "bold", it))
   }
 }
 #show figure.where(kind: table): set figure.caption(position: top)
@@ -62,7 +66,7 @@
 #counter(page).update(1)
 #set text(font: "SimSun", size: 12pt, weight: "medium")
 #v(2em)
-#outline(indent: 1em)
+#outline(depth: 3, indent: 1em)
 #pagebreak()
 
 #align(center)[
