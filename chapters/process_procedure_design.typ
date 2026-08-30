@@ -357,6 +357,74 @@ $ T_j = 0.26 + 1.08 + 0.63 + 0.74 + 0.53 + 0.06 = 3.30"min" $
   ),
 )
 
+=== 工序4基本参数
+1.加工材料\
+#indent 工件材料：HT200灰铸铁 180HBS\
+#indent 加工要求：半精车$ph 45$外圆及右端面，倒 C7 大倒角，半精车$ph 90$右端面，并切$ph 45$与$ph 90$之间的 3×2 退刀槽\
+#indent 本工序所用机床、刀具及切削用量均与工序3相同，即选用 CA6140 卧式车床，采用硬质合金 YG6 车刀，背吃刀量 $alpha_p = 1"mm"$，进给量 $f = 0.4"mm/r"$。\
+#indent 本工序最大加工直径为 $ph 90$，切削速度计算与工序3相同，理论切削速度为 $37.6"m/min"$。由切削速度按最大直径 $ph 90$ 计算主轴转速\
+$ n = frac(1000 v, pi d) = frac(1000 times 37.6, pi times 90) = 133.0"r/min" $\
+#indent 根据 CA6140 卧式车床主轴转速表，选取与之相近的转速 $n = 125"r/min"$，故 $ph 90$ 段实际切削速度为\
+$ v = frac(pi d n, 1000) = frac(pi times 90 times 125, 1000) = 35.3"m/min" $\
+#indent 各段实际切削速度随直径不同，$ph 90$ 段为 35.3 m/min，$ph 45$ 段为 17.7 m/min。基本工时的计算公式为 $T_j = L/(f n)$，其中 $L$ 为刀具行程长度，$l_1 = 2"mm"$ 为切入量，$l_2 = 2"mm"$ 为切出量，进给量 $f = 0.4"mm/r"$，转速 $n = 125"r/min"$。\
+==== 半精车 $ph 45$ 外圆的基本工时
+#indent $ph 45$ 外圆轴向长度为 41mm，行程为 $L = 41 + l_1 + l_2 = 41 + 2 + 2 = 45"mm"$，故其基本工时为\
+$ T_j = frac(45, 0.4 times 125) = 0.90"min" $\
+==== 半精车 $ph 45$ 右端面的基本工时
+#indent 工件右端面为实心，车刀由外圆走刀至中心，行程为 $L = d/2 + l_1 + l_2 = 22.5 + 2 + 2 = 26.5"mm"$，故其基本工时为\
+$ T_j = frac(26.5, 0.4 times 125) = 0.53"min" $\
+==== 倒 C7 大倒角的基本工时
+#indent 工件最右端为 C7 大倒角，为 45 度倒角，倒角行程取 $L = 10"mm"$，故其基本工时为\
+$ T_j = frac(10, 0.4 times 125) = 0.20"min" $\
+==== 半精车 $ph 90$ 右端面的基本工时
+#indent 车刀由 $ph 90$ 走刀至 $ph 45$，行程为 $L = (90-45)/2 + l_1 + l_2 = 22.5 + 2 + 2 = 26.5"mm"$，故其基本工时为\
+$ T_j = frac(26.5, 0.4 times 125) = 0.53"min" $\
+==== 切 3×2 退刀槽的基本工时
+#indent $ph 45$ 与 $ph 90$ 之间的退刀槽为 3×2，切槽行程取 $L = 3"mm"$，故其基本工时为\
+$ T_j = frac(3, 0.4 times 125) = 0.06"min" $\
+#indent 故工序4的基本工时为各表面基本工时之和：\
+$ T_j = 0.90 + 0.53 + 0.20 + 0.53 + 0.06 = 2.22"min" $
+#indent 工序4的切削用量与工艺参数汇总如下：
+
+#figure(
+  kind: table,
+  caption: [工序4 工艺参数表],
+  table(
+    align: center,
+    column-gutter: 1.5em,
+    row-gutter: 0.2em,
+    stroke: none,
+    columns: (auto, auto, auto),
+    table.hline(stroke: 1.2pt),
+    table.cell(colspan: 3, align: center + horizon)[工序4　半精车 $ph 45$ 外圆、右端面及 $ph 90$ 右端面，倒 C7 角，切 3×2 退刀槽],
+    table.hline(stroke: 0.5pt),
+    table.cell(align: center + horizon)[类别], [参数项], [参数值],
+    table.hline(stroke: 0.5pt),
+    table.cell(rowspan: 5, align: center + horizon)[刀具],
+    [刀具材料], [硬质合金 YG6],
+    [前角 $gamma_0$], [$6 degree$],
+    [主后角 $alpha_0$], [$7 degree$],
+    [刃倾角 $lambda_s$], [$+3 degree$],
+    [副偏角 $k_r^'$], [$6 degree$],
+    table.cell(rowspan: 3, align: center + horizon)[切削参数],
+    [背吃刀量 $a_p$], [$1"mm"$],
+    [进给量 $f$], [$0.4"mm/r"$],
+    [切削速度 $v$], [$ph 90"段" 35.3"m/min"$、$ph 45"段" 17.7"m/min"$],
+    table.cell(rowspan: 2, align: center + horizon)[机床],
+    [所用机床], [CA6140 卧式车床],
+    [主轴转速 $n$], [$125"r/min"$],
+    table.cell(rowspan: 5, align: center + horizon)[基本工时 $T_j$],
+    [半精车 $ph 45$ 外圆], [$0.90"min"$],
+    [半精车 $ph 45$ 右端面], [$0.53"min"$],
+    [倒 C7 大倒角], [$0.20"min"$],
+    [半精车 $ph 90$ 右端面], [$0.53"min"$],
+    [切 3×2 退刀槽], [$0.06"min"$],
+    table.hline(stroke: 0.5pt),
+    [合计总工时], [],[$2.22"min"$],
+    table.hline(stroke: 1.2pt),
+  ),
+)
+
 
 
 
