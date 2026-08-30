@@ -130,7 +130,7 @@ $ R_min=91+2 times 0.5 + 1.6/2=92.8 $
 #indent 查询《手册》表2.4-3 硬质合金及高速钢车刀粗车外圆和端面时的进给量，加工直径 $ph 100$ 的铸铁工件时，车刀刀杆应选用 $"B" times "H" = 20 times 50 "mm"$，且在切削深度小于等于 3mm 的情况下进给量 $f = 1.0 #sym.tilde 1.4$，此处取中间值 $f = 1.2"mm/r"$。\
 #indent 查询《手册》表2.4-1 车刀的磨损标准，外圆车刀粗车铸铁时后刀面最大磨损限度为 2.0mm。\
 #indent 根据《手册》表2.4-10 车削时切削速度的计算公式，选用材料为 W18Cr4V 的高速钢刀具，其切削灰铸铁时的切削速度计算公式为
-$ v = frac(c_v,60^(0.75)T^(0.1)a_(p)^(0.15)f^(y_v)) k_v $
+$ v = frac(c_v, T^(0.125) a_(p)^(0.15) f^(y_v)) k_v $
 #grid(
   columns: 2,
   column-gutter: 1em,
@@ -141,7 +141,68 @@ $ v = frac(c_v,60^(0.75)T^(0.1)a_(p)^(0.15)f^(y_v)) k_v $
     $f$#h(2em)进给量\
     $K_v$#h(2em)切削速度修正系数],
 )
-#indent 该表同时给出，当前条件下 $c_v = 22.7$，$y_v = 0.4$。\
+#indent 该表同时给出，当前条件下 $c_v = 22.7$，$y_v = 0.4$，刀具寿命取 $T = 60"min"$，切削速度修正系数 $K_v = 1.8$。将 $a_p = 2"mm"$、$f = 1.2"mm/r"$ 代入上式，得\
+$ v = frac(22.7, 60^(0.125) times 2^(0.15) times 1.2^(0.4)) times 1.8 = 20.5"m/min" $\
+#indent 由切削速度计算主轴转速\
+$ n = frac(1000 v, pi d) = frac(1000 times 20.5, pi times 100) = 65.3"r/min" $\
+#indent 根据 CA6140 卧式车床主轴转速表，选取与之相近的转速 $n = 63"r/min"$，则实际切削速度为\
+$ v = frac(pi d n, 1000) = frac(pi times 100 times 63, 1000) = 19.8"m/min" $\
+#indent 本工件为阶梯轴，各段尺寸依次为：$ph 100$ 圆盘宽 9mm，接 $ph 45$ 圆柱长 33mm，再接 $ph 90$ 圆盘宽 8mm，最后为 $ph 45$ 圆柱长 41mm，总长 91mm。由于各段直径不同，无法一次走刀完成，需按各段分别粗车。基本工时的计算公式为 $T_j = L/(f n)$，其中 $L$ 为刀具行程长度，$l_1 = 2"mm"$ 为切入量，$l_2 = 2"mm"$ 为切出量，进给量 $f = 1.2"mm/r"$，转速 $n = 63"r/min"$。\
+==== 车 $ph 100$ 柱体左侧端面的基本工时
+#indent 工件尚未钻孔，端面为实心，车刀由外圆走刀至中心，行程为 $L = d/2 + l_1 + l_2 = 50 + 2 + 2 = 54"mm"$，故其基本工时为\
+$ T_j = frac(54, 1.2 times 63) = 0.71"min" $\
+==== 车 $ph 100$ 外圆的基本工时
+#indent $ph 100$ 外圆轴向长度为 9mm，行程为 $L = 9 + l_1 + l_2 = 9 + 2 + 2 = 13"mm"$，故其基本工时为\
+$ T_j = frac(13, 1.2 times 63) = 0.17"min" $\
+==== 车 B 面之 $ph 100$ 右端面的基本工时
+#indent 车刀由 $ph 100$ 走刀至 $ph 45$，行程为 $L = (100-45)/2 + l_1 + l_2 = 27.5 + 2 + 2 = 31.5"mm"$，故其基本工时为\
+$ T_j = frac(31.5, 1.2 times 63) = 0.42"min" $\
+==== 车 B 面之 $ph 45$ 回转面的基本工时
+#indent $ph 45$ 回转面轴向长度为 33mm，行程为 $L = 33 + l_1 + l_2 = 33 + 2 + 2 = 37"mm"$，故其基本工时为\
+$ T_j = frac(37, 1.2 times 63) = 0.49"min" $\
+==== 车 B 面之 $ph 90$ 左端面的基本工时
+#indent 车刀由 $ph 90$ 走刀至 $ph 45$，行程为 $L = (90-45)/2 + l_1 + l_2 = 22.5 + 2 + 2 = 26.5"mm"$，故其基本工时为\
+$ T_j = frac(26.5, 1.2 times 63) = 0.35"min" $\
+#indent 故工序1的基本工时为各表面基本工时之和：\
+$ T_j = 0.71 + 0.17 + 0.42 + 0.49 + 0.35 = 2.14"min" $
+#indent 工序1的切削用量与工艺参数汇总如下：
+
+#figure(
+  kind: table,
+  caption: [工序1工艺参数表],
+  table(
+    align: center,
+    column-gutter: 1.5em,
+    row-gutter: 0.2em,
+    stroke: none,
+    columns: (auto, auto, auto),
+    table.hline(stroke: 1.2pt),
+
+    table.cell(align: center + horizon)[类别], [参数项], [参数值],
+    table.hline(stroke: 0.5pt),
+    table.cell(rowspan: 5, align: center + horizon)[刀具],
+    [刀具材料], [W18Cr4V 高速钢],
+    [前角 $gamma_0$], [$12 degree$],
+    [后角 $alpha_0$], [$7 degree$],
+    [主偏角 $k_r$], [$75 degree$],
+    [刃倾角 $lambda_s$], [$#sym.minus 5 degree$],
+    table.cell(rowspan: 3, align: center + horizon)[切削参数],
+    [背吃刀量 $a_p$], [$2"mm"$],
+    [进给量 $f$], [$1.2"mm/r"$],
+    [切削速度 $v$], [$ph 100"段" 19.8"m/min"$、$ph 90"段" 17.8"m/min"$、$ph 45"段" 8.9"m/min"$],
+    table.cell(rowspan: 2, align: center + horizon)[机床],
+    [所用机床], [CA6140 卧式车床],
+    [主轴转速 $n$], [$63"r/min"$],
+    table.cell(rowspan: 5, align: center + horizon)[基本工时 $T_j$],
+    [车 $ph 100$ 左端面], [$0.71"min"$],
+    [车 $ph 100$ 外圆], [$0.17"min"$],
+    [车 B 面之 $ph 100$ 右端面], [$0.42"min"$],
+    [车 B 面之 $ph 45$ 回转面], [$0.49"min"$],
+    [车 B 面之 $ph 90$ 左端面], [$0.35"min"$],
+    [合计总工时], [],[$2.14"min"$],
+    table.hline(stroke: 1.2pt),
+  ),
+)
 
 
 
